@@ -6,7 +6,7 @@
 Summary:	libqb - high performance client server reusable features
 Name:		libqb
 Version:	0.14.0
-Release:	0.1
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	https://fedorahosted.org/releases/q/u/quarterback/%{name}-%{version}.tar.gz
