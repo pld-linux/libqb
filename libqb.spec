@@ -6,17 +6,19 @@
 Summary:	libqb - high performance client server reusable features
 Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
 Name:		libqb
-Version:	0.14.0
+Version:	0.14.4
 Release:	1
-License:	LGPL v2.1
+License:	LGPL v2.1+
 Group:		Libraries
-Source0:	https://fedorahosted.org/releases/q/u/quarterback/%{name}-%{version}.tar.gz
-# Source0-md5:	1c310cc167fd5e2d074d693f33671595
+Source0:	https://fedorahosted.org/releases/q/u/quarterback/%{name}-%{version}.tar.xz
+# Source0-md5:	514d07752c7c746dc9a1d88d441f0ec3
 URL:		http://www.libqb.org/
-%{?with_tests:BuildRequires:	check-devel}
+%{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	doxygen
-BuildRequires:	glib2-devel
+BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,6 +60,7 @@ Statyczna biblioteka libqb.
 
 %build
 %configure \
+	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static}
 %{__make}
 
@@ -82,10 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README.*
-%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_sbindir}/qb-blackbox
 %attr(755,root,root) %{_libdir}/libqb.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libqb.so.0
-%{_mandir}/man8/*
+%{_mandir}/man8/qb-blackbox.8*
 
 %files devel
 %defattr(644,root,root,755)
@@ -93,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libqb.la
 %{_includedir}/qb
 %{_pkgconfigdir}/libqb.pc
-%{_mandir}/man3/*
+%{_mandir}/man3/qb*.h.3*
 
 %if %{with static_libs}
 %files static
