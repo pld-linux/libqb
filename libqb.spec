@@ -4,6 +4,7 @@
 %bcond_without	tests		# don't build and run tests
 #
 Summary:	libqb - high performance client server reusable features
+Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
 Name:		libqb
 Version:	0.14.0
 Release:	1
@@ -22,6 +23,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 libqb is a library with the primary purpose of providing high
 performance client server reusable features. It provides high
 performance logging, tracing, ipc, and poll.
+
+%description -l pl.UTF-8
+libqb to biblioteka, której głównym celem jest dostarczenie
+wysoko wydajnych funkcji użytecznych przy architekturze klient-serwer.
+Udostępnia wysoko wydajne logowanie, śledzenie, IPC oraz poll.
 
 %package devel
 Summary:	Header files for libqb library
@@ -65,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_docdir}/%{name}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,17 +83,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README.*
 %attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) %ghost %{_libdir}/libqb.so.0
 %attr(755,root,root) %{_libdir}/libqb.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libqb.so.0
 %{_mandir}/man8/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_mandir}/man3/*
-%{_libdir}/libqb.so
+%attr(755,root,root) %{_libdir}/libqb.so
 %{_libdir}/libqb.la
 %{_includedir}/qb
 %{_pkgconfigdir}/libqb.pc
+%{_mandir}/man3/*
 
 %if %{with static_libs}
 %files static
