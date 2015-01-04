@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
-%bcond_without	tests		# don't build and run tests
+%bcond_with	tests		# don't build and run tests
 #
 Summary:	libqb - high performance client server reusable features
 Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
