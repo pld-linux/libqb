@@ -6,12 +6,12 @@
 Summary:	libqb - high performance client server reusable features
 Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
 Name:		libqb
-Version:	0.17.1
-Release:	2
+Version:	0.17.2
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://fedorahosted.org/releases/q/u/quarterback/%{name}-%{version}.tar.xz
-# Source0-md5:	5770b343baa4528f6fec90120ec55048
+# Source0-md5:	de1e5d38fa449b4d127940c10d117260
 URL:		https://github.com/ClusterLabs/libqb
 %{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	doxygen
