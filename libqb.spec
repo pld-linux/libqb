@@ -1,17 +1,18 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static libraries
-%bcond_with	tests		# don't build and run tests
+%bcond_without	static_libs	# static library
+%bcond_with	tests		# "make check" call
 #
 Summary:	libqb - high performance client server reusable features
 Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
 Name:		libqb
-Version:	0.17.2
+Version:	1.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	https://fedorahosted.org/releases/q/u/quarterback/%{name}-%{version}.tar.xz
-# Source0-md5:	de1e5d38fa449b4d127940c10d117260
+#Source0Download: https://github.com/ClusterLabs/libqb/releases
+Source0:	https://github.com/ClusterLabs/libqb/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	abaf84a0bd7ee637163aa6d9008a4f6e
 URL:		https://github.com/ClusterLabs/libqb
 %{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	doxygen
