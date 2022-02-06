@@ -6,18 +6,20 @@
 Summary:	libqb - high performance client server reusable features
 Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
 Name:		libqb
-Version:	1.0.6
+Version:	2.0.4
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://github.com/ClusterLabs/libqb/releases
 Source0:	https://github.com/ClusterLabs/libqb/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	5fa7d3d2c2eb4fd10722991100a5c190
+# Source0-md5:	9186cbf26645607d3ac48911ca214b6b
 URL:		https://github.com/ClusterLabs/libqb
 %{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	doxygen
 BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
+BuildRequires:	systemd-devel >= 1:209
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -91,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README.markdown
 %attr(755,root,root) %{_sbindir}/qb-blackbox
 %attr(755,root,root) %{_libdir}/libqb.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libqb.so.0
+%attr(755,root,root) %ghost %{_libdir}/libqb.so.100
 %{_mandir}/man8/qb-blackbox.8*
 
 %files devel
@@ -100,6 +102,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/qb
 %{_pkgconfigdir}/libqb.pc
 %{_mandir}/man3/qb*.h.3*
+%{_mandir}/man3/qb_*.3*
+
+# XXX: subpackage?
+%attr(755,root,root) %{_bindir}/doxygen2man
+%{_mandir}/man1/doxygen2man.1*
 
 %if %{with static_libs}
 %files static
