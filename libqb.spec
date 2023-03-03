@@ -6,13 +6,13 @@
 Summary:	libqb - high performance client server reusable features
 Summary(pl.UTF-8):	libqb - wysoko wydajne funkcje architektury klient-serwer
 Name:		libqb
-Version:	2.0.4
+Version:	2.0.6
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://github.com/ClusterLabs/libqb/releases
 Source0:	https://github.com/ClusterLabs/libqb/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	9186cbf26645607d3ac48911ca214b6b
+# Source0-md5:	59bd4c8e5dd4ba66750757eac69b966a
 URL:		https://github.com/ClusterLabs/libqb
 %{?with_tests:BuildRequires:	check-devel >= 0.9.4}
 BuildRequires:	doxygen
