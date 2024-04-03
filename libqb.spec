@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# static library
+%bcond_without	systemd		# systemd
 %bcond_with	tests		# "make check" call
 #
 Summary:	libqb - high performance client server reusable features
@@ -19,7 +20,7 @@ BuildRequires:	doxygen
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
-BuildRequires:	systemd-devel >= 1:209
+%{?with_systemd:BuildRequires:	systemd-devel >= 1:209}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -64,7 +65,8 @@ Statyczna biblioteka libqb.
 %build
 %configure \
 	--disable-silent-rules \
-	%{!?with_static_libs:--disable-static}
+	%{!?with_static_libs:--disable-static} \
+	%{!?with_systemd:--disable-systemd-journal}
 %{__make}
 
 %if %{with tests}
